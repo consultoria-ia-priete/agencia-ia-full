@@ -1,0 +1,35 @@
+# ─── Segredos / config local ───────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.dev.vars
+secrets/
+*.secret
+.mcp.json
+# Exceção: o .mcp.json do template da Base é PLACEHOLDER (versionar)
+!modulos/agencia-ia-base/template/_TEMPLATE_SSCIA/.mcp.json
+
+# ─── Cloudflare / Wrangler (config local com IDs reais) ────────────────
+# Os wrangler.toml dos funis/worker são versionados como template sanitizado;
+# o .wrangler/ e o real ficam fora.
+.wrangler/
+
+# ─── Backups do sanitize.sh ─────────────────────────────────────────────
+*.bak
+*.bak-*
+
+# ─── Dependências / build ───────────────────────────────────────────────
+node_modules/
+dist/
+build/
+.astro/
+__pycache__/
+*.pyc
+
+# ─── Perfil preenchido do cliente (não versionar instância) ─────────────
+**/_opensquad/_memory/brand-profile.json
+!modulos/agencia-ia-base/template/_TEMPLATE_SSCIA/_opensquad/_memory/brand-profile.json
+
+# ─── SO ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

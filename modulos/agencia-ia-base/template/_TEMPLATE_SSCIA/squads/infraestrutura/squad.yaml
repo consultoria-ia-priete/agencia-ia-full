@@ -1,0 +1,50 @@
+name: infraestrutura
+display_name: "⚙️ Infraestrutura"
+version: "1.0"
+description: "Conecta e gerencia especialistas em plataformas — CRM, automações, tráfego, analytics e integrações do ecossistema {{MARCA_PRINCIPAL}}"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  niche: "{{NICHO_PRINCIPAL}}"
+  saas: "{{PRODUTO_RECORRENTE}} (CRM Funnels White-label)"
+  mission: "Manter toda a infraestrutura de plataformas operando com precisão cirúrgica — cada sistema configurado, integrado e otimizado"
+  platforms:
+    - CRM Funnels (CRM, automações, social, conversas, funis, pagamentos)
+    - Meta Ads (Facebook + Instagram Ads Manager)
+    - Google (Ads, Analytics 4, Tag Manager, Search Console)
+    - Make (Integromat) / n8n (automações e integrações)
+    - WordPress / Elementor / Hostinger (sites e LPs)
+
+pipeline:
+  - step: 1
+    name: diagnostico
+    agent: orquestrador
+    task: diagnostico-infraestrutura.md
+    type: checkpoint
+    description: "INFRA coleta briefing: qual plataforma, qual problema, qual objetivo"
+
+  - step: 2
+    name: execucao-especialista
+    agent: especialista-plataforma
+    task: execucao-plataforma.md
+    type: execution
+    description: "Especialista da plataforma identificada executa a tarefa técnica"
+
+  - step: 3
+    name: validacao
+    agent: orquestrador
+    task: validacao-entrega.md
+    type: checkpoint
+    description: "INFRA valida entrega, documenta e reporta ao NEXUS"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "configuracoes/"
+    - "documentacoes/"
+    - "playbooks/"
+    - "relatorios/"

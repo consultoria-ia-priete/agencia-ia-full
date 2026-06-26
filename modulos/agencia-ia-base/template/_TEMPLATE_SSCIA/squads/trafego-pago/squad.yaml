@@ -1,0 +1,82 @@
+name: trafego-pago
+display_name: "📊 Tráfego Pago"
+version: "1.0"
+description: "Gestão estratégica de campanhas no Google Ads e Meta Ads para {{MARCA_PRINCIPAL}}"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  funnel:
+    topo: "Anúncio → LP Low Ticket ({{SITE_LOWTICKET}})"
+    meio: "Webinar semanal"
+    fundo: "High Ticket / {{PRODUTO_RECORRENTE}} ({{TICKET_RECORRENTE}})"
+  platforms: [Meta Ads, Google Ads]
+  objective: "Leads qualificados e vendas low ticket a custo eficiente"
+
+pipeline:
+  - step: 1
+    name: briefing-campanha
+    agent: media-buyer
+    task: briefing-campanha.md
+    type: checkpoint
+    description: "Define objetivo, orçamento, produto, KPIs e prazo da campanha"
+
+  - step: 2
+    name: estrategia-midia
+    agent: media-buyer
+    task: estrategia-midia.md
+    type: execution
+    description: "Distribui orçamento entre Google e Meta, define funil de mídia"
+
+  - step: 3
+    name: estrutura-meta
+    agent: meta-ads-specialist
+    task: estrutura-meta-ads.md
+    type: execution
+    description: "Estrutura campanhas Meta: objetivos, conjuntos de anúncios, audiências"
+
+  - step: 4
+    name: estrutura-google
+    agent: google-ads-specialist
+    task: estrutura-google-ads.md
+    type: execution
+    description: "Estrutura campanhas Google: Search, YouTube, Display — palavras-chave e lances"
+
+  - step: 5
+    name: audiencias
+    agent: meta-ads-specialist
+    task: audiencias-segmentacao.md
+    type: execution
+    description: "Define audiências frias, mornas e quentes (retargeting) para cada plataforma"
+
+  - step: 6
+    name: tracking
+    agent: performance-analyst
+    task: setup-tracking.md
+    type: execution
+    description: "Plano de configuração: Pixel Meta, Google Tag, eventos de conversão"
+
+  - step: 7
+    name: plano-escala
+    agent: media-buyer
+    task: plano-escala.md
+    type: checkpoint
+    description: "Apresenta plano completo de campanha + regras de escala e otimização"
+
+  - step: 8
+    name: relatorio
+    agent: performance-analyst
+    task: relatorio-performance.md
+    type: execution
+    description: "Template de relatório semanal de performance e recomendações"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "estrategia-midia.md"
+    - "estrutura-campanhas.md"
+    - "plano-audiencias.md"
+    - "setup-tracking.md"
+    - "relatorio-performance.md"

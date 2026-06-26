@@ -1,0 +1,56 @@
+template: cleaning_before_after
+version: 1.0
+niche: residential cleaning
+purpose: organic_carousel
+default_model: flux-dev
+default_aspect: "1:1"
+
+# Como usar:
+# - {{brief}} = tema do carrossel (ex: "deep cleaning before spring", "kitchen makeover")
+# - {{brand.industry}}, {{brand.tone}}, {{geo_hint}} → resolvidos automaticamente
+# - Operador pode passar brief como string OU dict {tema, cidade, foco}
+
+slides:
+  - id: 1
+    type: hook_split
+    visual_prompt: |
+      Photo-realistic split-screen image, vertical divide.
+      LEFT half: messy {{brief}} — cluttered surfaces, visible dirt, dust on countertops, low warm yellow lighting, slightly muted colors. Looks lived-in but neglected.
+      RIGHT half: same exact angle and framing, but now spotless, organized, surfaces gleaming, bright soft natural daylight from a window, fresh and inviting.
+      {{geo_hint}}, modest middle-class home interior, no people visible, no logos, no text on image.
+      Shot on iPhone, candid documentary style.
+    text_overlay: ""
+    caption: |
+      The same room. Two hours apart.
+
+  - id: 2
+    type: pain_relate
+    visual_prompt: |
+      Close-up shot of a tired homeowner's hand resting on a cluttered countertop with stains, dust and unwashed dishes piled in the background. {{brand.industry}} context. Warm afternoon light, slightly desaturated. {{geo_hint}}. Documentary style, photo-realistic, no text, no logos.
+    text_overlay: ""
+    caption: |
+      You came home exhausted. The mess is still there.
+
+  - id: 3
+    type: solution
+    visual_prompt: |
+      Professional cleaner in clean white-and-blue uniform working in a bright modern home, wiping a kitchen counter with eco-friendly spray bottle visible. Confident, focused expression. {{geo_hint}}. Natural daylight, photo-realistic, candid lifestyle shot. No logos, no text on image.
+    text_overlay: ""
+    caption: |
+      Trained, background-checked, eco-friendly products. We do it for you.
+
+  - id: 4
+    type: result
+    visual_prompt: |
+      A relaxed homeowner sitting on a couch in a perfectly clean, organized living room, soft natural light, holding a cup of coffee, calm satisfied smile. {{geo_hint}}. Slightly cinematic, lifestyle photography, photo-realistic. No logos, no text on image.
+    text_overlay: ""
+    caption: |
+      Now you can finally rest in your own home.
+
+  - id: 5
+    type: cta
+    visual_prompt: |
+      Bright, clean kitchen with morning light streaming in. Counters are spotless. A small chalkboard or note on the counter. Vibe is welcoming, minimal, calm. {{geo_hint}}. Photo-realistic, vertical composition, copy space at the bottom. No actual text or logos in the image.
+    text_overlay: "BOOK YOUR FREE QUOTE"
+    caption: |
+      Ready for your home spotless in 2 hours? Book online — link in bio.

@@ -1,0 +1,28 @@
+# ─── Segredos / config local ───────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.dev.vars
+secrets/
+*.secret
+
+# ─── Backups do sanitize.sh ─────────────────────────────────────────────
+*.bak
+*.bak-*
+
+# ─── Dependências / build ───────────────────────────────────────────────
+node_modules/
+dist/
+build/
+.wrangler/
+.astro/
+__pycache__/
+*.pyc
+
+# ─── SO ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# NOTA: os wrangler.toml dos funis são versionados de propósito (já sanitizados,
+# com placeholders SEU-DOMINIO/__REPLACE_ME__). O aluno preenche os dele.
+# Antes de versionar a SUA cópia preenchida, rode scripts/scan-secrets.sh .

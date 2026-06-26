@@ -1,0 +1,39 @@
+# ─── Segredos e credenciais (NUNCA versionar) ──────────────────────────
+.mcp.json
+.env
+.env.*
+!.env.example
+*.secret
+secrets/
+.dev.vars
+
+# Exceção: o .mcp.json do template é PLACEHOLDER (queremos versionar)
+!template/_TEMPLATE_SSCIA/.mcp.json
+
+# ─── Memória do cliente (perfil/credenciais preenchidos) ───────────────
+# A base NÃO versiona instância provisionada; só o template.
+**/_opensquad/_memory/brand-profile.json
+!template/_TEMPLATE_SSCIA/_opensquad/_memory/brand-profile.json
+
+# ─── Cloudflare / Wrangler ─────────────────────────────────────────────
+wrangler.toml
+!wrangler.toml.example
+.wrangler/
+
+# ─── Backups do sanitize.sh ────────────────────────────────────────────
+*.bak
+
+# ─── Estado de provisionamento ─────────────────────────────────────────
+.sscia-state.json
+.sscia-backup/
+
+# ─── Dependências / build / SO ─────────────────────────────────────────
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db

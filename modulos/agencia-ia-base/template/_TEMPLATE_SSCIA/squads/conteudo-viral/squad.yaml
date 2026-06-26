@@ -1,0 +1,75 @@
+name: conteudo-viral
+display_name: "🎬 Conteúdo Viral"
+version: "1.0"
+description: "Produz conteúdo viral para Instagram Reels e YouTube do {{MARCA_PRINCIPAL}} / {{CLIENTE_IG}}"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  niche: "{{NICHO_PRINCIPAL}}"
+  audience: "Empreendedores que querem faturar {{RESULTADO_PROMETIDO}} com IA"
+  references:
+    - "{{REFERENCIA_1}} (Instagram) — storytelling direto e provocativo"
+    - "@hormozi (Instagram) — densidade de valor, sem fluff"
+    - "@russellbrunson (YouTube) — funil via narrativa e frameworks"
+
+pipeline:
+  - step: 1
+    name: briefing
+    agent: estrategista
+    task: briefing-semanal.md
+    type: checkpoint
+    description: "Define tema, objetivo e formato do conteúdo da semana"
+
+  - step: 2
+    name: tendencias
+    agent: analista-tendencias
+    task: pesquisa-tendencias.md
+    type: execution
+    description: "Pesquisa trending topics em IA, marketing digital e empreendedorismo"
+
+  - step: 3
+    name: pauta
+    agent: estrategista
+    task: pauta-conteudo.md
+    type: checkpoint
+    description: "Apresenta pauta semanal com 5–7 ideias de conteúdo para aprovação"
+
+  - step: 4
+    name: roteiro
+    agent: roteirista
+    task: roteiro-video.md
+    type: execution
+    description: "Cria roteiro completo do vídeo/reel com hook, desenvolvimento e CTA"
+
+  - step: 5
+    name: legenda
+    agent: copywriter-legenda
+    task: copy-legenda.md
+    type: execution
+    description: "Escreve legenda otimizada com copy magnético, hashtags e CTA"
+
+  - step: 6
+    name: calendario
+    agent: estrategista
+    task: calendario-editorial.md
+    type: execution
+    description: "Organiza cronograma de publicação da semana"
+
+  - step: 7
+    name: entrega
+    agent: estrategista
+    task: output-final.md
+    type: checkpoint
+    description: "Apresenta pacote completo de conteúdo para aprovação final"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "pauta-semanal.md"
+    - "roteiros/"
+    - "legendas/"
+    - "calendario-editorial.md"

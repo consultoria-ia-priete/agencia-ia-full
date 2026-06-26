@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>negócio.ia | by Alex Priete</title>
+    <meta name="description" content="Venda sites que a IA cria em 10 minutos para empresários. De R$5K a R$15K Todo Mês." />
+    <meta name="author" content="Alex Priete" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="theme-color" content="#140a08" />
+    <link rel="canonical" href="https://SEU-DOMINIO.com/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload font CSS (URL estável) — Google Fonts retorna font-display:swap por default,
+         font weight 800 do hero usa stratégia "swap" enquanto woff2 é resolvido. -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+
+    <meta property="og:title" content="negócio.ia | by Alex Priete" />
+    <meta property="og:description" content="Venda sites que a IA cria em 10 minutos para empresários. De R$5K a R$15K Todo Mês." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/og_image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{SEU_INSTAGRAM}}" />
+    <meta name="twitter:title" content="negócio.ia | by Alex Priete" />
+    <meta name="twitter:description" content="Venda sites que a IA cria em 10 minutos para empresários. De R$5K a R$15K Todo Mês." />
+    <meta name="twitter:image" content="/images/og_image.png" />
+
+    <link rel="preconnect" href="https://{{TRACKING_DOMAIN}}" crossorigin />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+
+    <!-- Meta Pixel — server-side CAPI dispara via {{TRACKING_DOMAIN}}/tracker -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{META_PIXEL_ID}}');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel -->
+
+    <!-- JSON-LD: Organization, Course (negócio.ia), Product/Offer (R$37). Habilita rich results
+         e melhora ranking. Preço, moeda e disponibilidade ficam estruturados pro Google. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://SEU-DOMINIO.com/#organization",
+          "name": "Alex Priete · ConsultorIA",
+          "url": "https://SEU-DOMINIO.com",
+          "founder": {
+            "@type": "Person",
+            "name": "Alex Priete",
+            "url": "https://www.instagram.com/{{SEU_INSTAGRAM}}",
+            "sameAs": ["https://www.instagram.com/{{SEU_INSTAGRAM}}"]
+          },
+          "logo": "https://SEU-DOMINIO.com/favicon.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://SEU-DOMINIO.com/#website",
+          "url": "https://SEU-DOMINIO.com/",
+          "name": "negócio.ia",
+          "publisher": { "@id": "https://SEU-DOMINIO.com/#organization" },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "Course",
+          "name": "negócio.ia — Treinamento Completo",
+          "description": "Mini-curso completo: como vender sites que a IA cria em 10 minutos para empresários e faturar de R$5K a R$15K por mês. Inclui 7 módulos, scripts de prospecção e canal exclusivo.",
+          "provider": { "@id": "https://SEU-DOMINIO.com/#organization" },
+          "url": "https://SEU-DOMINIO.com/",
+          "inLanguage": "pt-BR",
+          "image": "https://SEU-DOMINIO.com/images/og_image.png",
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT8H"
+          },
+          "offers": {
+            "@type": "Offer",
+            "@id": "https://SEU-DOMINIO.com/#offer",
+            "name": "Acesso vitalício ao negócio.ia",
+            "price": "37.00",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "url": "https://SEU-DOMINIO.com/",
+            "category": "OnlineCourse"
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="dark">
+    <noscript>
+      <img height="1" width="1" style="display:none" alt=""
+           src="https://www.facebook.com/tr?id={{META_PIXEL_ID}}&ev=PageView&noscript=1" />
+    </noscript>
+    <div id="root"></div>
+    <!-- Cross-subdomain tracking init: middleware do tk seta cookies em .SEU-DOMINIO.com -->
+    <img src="https://{{TRACKING_DOMAIN}}/init" alt="" width="1" height="1"
+         style="position:absolute;left:-9999px;top:-9999px"
+         referrerpolicy="no-referrer-when-downgrade" />
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

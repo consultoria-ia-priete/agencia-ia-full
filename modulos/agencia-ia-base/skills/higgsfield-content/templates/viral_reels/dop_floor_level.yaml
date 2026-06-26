@@ -1,0 +1,26 @@
+name: dop_floor_level
+playbook: viral-reels-seo
+sub_playbook: dop-7s-reel
+description: |
+  Floor-level POV. Câmera paralela ao chão (perspectiva de formiga).
+  Usado pra: mop em chão de banheiro, finishing oil em plank, brush em piso.
+duration: 7
+aspect_ratio: "9:16"
+model: dop
+required_params:
+  - subject
+  - action
+defaults:
+  camera_feel: handheld slight shake
+  lighting: soft diffused light
+  texture: wet shine trail / fine grain / detailed surface
+  mood: authentic, satisfying, real work
+validators:
+  - no_face_no_person
+  - dop_valid_angle
+prompt_template: |
+  Floor-level POV camera parallel to floor surface,
+  showing {subject} {action},
+  {camera_feel}, {lighting}, {texture},
+  no face no person above frame,
+  {mood}, transformation reveal feel.

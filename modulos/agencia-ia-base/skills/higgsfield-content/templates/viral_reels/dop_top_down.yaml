@@ -1,0 +1,26 @@
+name: dop_top_down
+playbook: viral-reels-seo
+sub_playbook: dop-7s-reel
+description: |
+  Top-down aerial DoP. Câmera direto pra baixo, worker no centro.
+  Usado pra: vacuum em carpete, mãos lavando bancada, instalação de plank visto de cima.
+duration: 7
+aspect_ratio: "9:16"
+model: dop
+required_params:
+  - subject
+  - action
+defaults:
+  camera_feel: locked-off smooth
+  lighting: warm indoor light
+  texture: satisfying motion detail
+  mood: authentic, satisfying, real work
+validators:
+  - no_face_no_person
+  - dop_valid_angle
+prompt_template: |
+  Top-down aerial view of {subject} {action},
+  camera directly overhead {camera_feel},
+  {lighting}, {texture},
+  no face no person visible, no hands close to camera,
+  {mood}, micro-shake optional for authenticity.

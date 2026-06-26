@@ -1,0 +1,120 @@
+template: before_after
+version: 1.0
+niche: residential cleaning / hardwood flooring / similar transformation services
+purpose: viral_short
+default_duration_s: 45
+default_aspect: "9:16"
+slide_count: 6
+
+# {{brief}}, {{brand.industry}}, {{geo_hint}}, {{language}}, {{brand.tone}} resolvidos pelo prompt_builder
+
+script:
+  language: "{{language}}"
+  voice_default: "{{brand.voice_id}}"
+  hook_style: "pricing_contrast | time_contrast | surprising_outcome"
+
+  segments:
+    - id: hook
+      duration_s: 5
+      script: |
+        [Hook — 1 frase forte sobre o problema. Inspirado em Edge Cleaning WA pattern:
+        contraste $/anos vs custo final. Adaptar à indústria.]
+        Ex pra cleaning: "She paid $100/cleaning for 3 years. Then this happened."
+
+    - id: problem
+      duration_s: 8
+      script: |
+        [Mostrar o problema específico — visual: before quase nojento.
+        Voz descreve a dor: "Stains were so deep that no surface cleaning could fix them."]
+
+    - id: turning_point
+      duration_s: 5
+      script: |
+        [Momento de virada — a decisão de chamar profissional.]
+        "She called us. Here's what we did differently."
+
+    - id: solution_demo
+      duration_s: 18
+      script: |
+        [Body — 3 ações específicas que diferenciam serviço pro cliente.
+        Visual: cleaner trabalhando, before/after split.]
+
+    - id: result
+      duration_s: 5
+      script: |
+        [After dramático.]
+        "$X total. Done in 2 hours. Spotless."
+
+    - id: cta
+      duration_s: 4
+      script: |
+        [CTA com mecânica engagement.]
+        "Comment QUOTE for a free estimate."
+
+slides:
+  - id: 1
+    purpose: hook_visual
+    visual_prompt: |
+      Photo-realistic, dramatic before/after split-screen, {{brand.industry}} setting in {{geo_hint}}.
+      LEFT: severely problematic state (heavily stained, neglected, dirty).
+      RIGHT: pristine restored state.
+      No text on image (Remotion adds caption overlay).
+    duration_s: 5
+
+  - id: 2
+    purpose: problem_closeup
+    visual_prompt: |
+      Close-up macro shot of the specific problem ({{brief}}). Soft natural light, photo-realistic.
+      No people faces visible. {{geo_hint}} home interior.
+    duration_s: 8
+
+  - id: 3
+    purpose: turning_point_human
+    visual_prompt: |
+      Wide shot of homeowner looking concerned at the problem area. Hand reaching to phone.
+      Lifestyle photography, candid, photo-realistic. {{geo_hint}}.
+    duration_s: 5
+
+  - id: 4
+    purpose: solution_action
+    visual_prompt: |
+      Professional cleaner in uniform working with focused expression on the problem area.
+      Eco-friendly products visible. Bright natural light. Photo-realistic, documentary style.
+    duration_s: 9
+
+  - id: 5
+    purpose: solution_progress
+    visual_prompt: |
+      Mid-progress shot showing visible improvement. Same angle as slide 2 but cleaner.
+      Photo-realistic, daylight.
+    duration_s: 9
+
+  - id: 6
+    purpose: result_calm
+    visual_prompt: |
+      Final result — pristine area, homeowner relaxed in background, soft warm light.
+      Lifestyle, photo-realistic. {{geo_hint}}.
+    duration_s: 4
+
+remotion_composition: "ViralShort"
+
+remotion_props_schema:
+  audio_url: "URL do MP3 do voiceover (vem do ElevenLabs)"
+  audio_duration_s: "duração total do voiceover"
+  slides: "lista de {url, start_s, end_s, motion}"
+  captions_srt: "SRT inline (gerado pelo Whisper)"
+  brand:
+    primary_color: "{{brand.color_primary}}"
+    secondary_color: "{{brand.color_secondary}}"
+    logo_url: "{{brand.logo_url}}"
+    handle: "{{brand.handle}}"
+
+caption_style:
+  font: "Inter Bold"
+  size_px: 64
+  color: "#FFFFFF"
+  background: "rgba(0,0,0,0.55)"
+  padding_px: 12
+  position: "bottom"
+  word_emphasis_color: "{{brand.color_primary}}"
+  notes: "Remotion captura word-by-word do SRT e anima fade-in. Palavra-chave em cor da marca."

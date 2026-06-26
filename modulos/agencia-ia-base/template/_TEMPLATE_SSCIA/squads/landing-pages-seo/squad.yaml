@@ -1,0 +1,83 @@
+name: landing-pages-seo
+display_name: "🔍 Landing Pages + SEO"
+version: "1.0"
+description: "Cria landing pages de alta conversão + SEO para Google, IA (ChatGPT/Perplexity) e Google My Business"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  site: "https://{{SITE_PRINCIPAL}}/"
+  lp_low_ticket: "https://{{SITE_LOWTICKET}}"
+  audience: "{{AVATAR_PRINCIPAL}}"
+  seo_targets:
+    google: "pesquisa orgânica Google"
+    ai_engines: "ChatGPT, Perplexity, Gemini, Copilot"
+    local: "Google My Business"
+
+pipeline:
+  - step: 1
+    name: briefing-pagina
+    agent: lp-architect
+    task: briefing-pagina.md
+    type: checkpoint
+    description: "Define objetivo da LP, oferta, público, CTA principal e métricas de sucesso"
+
+  - step: 2
+    name: pesquisa-keywords
+    agent: seo-specialist
+    task: pesquisa-keywords.md
+    type: execution
+    description: "Pesquisa palavras-chave para Google + termos usados em buscas por IA"
+
+  - step: 3
+    name: estrutura-lp
+    agent: lp-architect
+    task: estrutura-lp.md
+    type: checkpoint
+    description: "Define wireframe da LP: hero, problema, solução, prova, oferta, CTA"
+
+  - step: 4
+    name: copy-lp
+    agent: lp-architect
+    task: copy-lp.md
+    type: execution
+    description: "Escreve copy completo da landing page section por section"
+
+  - step: 5
+    name: seo-onpage
+    agent: seo-specialist
+    task: seo-onpage.md
+    type: execution
+    description: "Otimiza title tag, meta description, H1-H6, alt text, schema markup, FAQs"
+
+  - step: 6
+    name: ai-seo
+    agent: ai-seo-specialist
+    task: seo-para-ia.md
+    type: execution
+    description: "Estrutura conteúdo para ser citado por ChatGPT, Perplexity e Gemini (AEO/GEO)"
+
+  - step: 7
+    name: gmb
+    agent: gmb-specialist
+    task: estrategia-gmb.md
+    type: execution
+    description: "Estratégia Google My Business: perfil, posts, reviews, categorias, Q&A"
+
+  - step: 8
+    name: entrega
+    agent: lp-architect
+    task: pacote-final.md
+    type: checkpoint
+    description: "Entrega pacote completo: LP, SEO checklist, plano GMB e estratégia IA-SEO"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "copy-landing-page.md"
+    - "seo-onpage-checklist.md"
+    - "ai-seo-strategy.md"
+    - "gmb-strategy.md"
+    - "pacote-completo.md"

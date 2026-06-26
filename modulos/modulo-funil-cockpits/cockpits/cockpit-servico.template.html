@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<title>__CLIENTE__ — Cockpit · __DATA_HOJE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marca:__C_PRIMARY__;--marca-2:__C_SECONDARY__;--marca-dark:__C_PDARK__;--marca-darker:__C_PDARKER__;
+    --areia:__C_AREIA__;--tinta:#1f1a16;--tinta-sub:#5d5650;--linha:__C_LINHA__;
+    --display:'Playfair Display',serif;--ui:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fafaf7;color:var(--tinta);font-family:var(--ui);font-size:16px;line-height:1.55}
+  .page{max-width:1180px;margin:0 auto;padding:42px 56px 72px}
+  header.hero{background:linear-gradient(135deg,var(--marca) 0%,var(--marca-dark) 60%,var(--marca-darker) 100%);
+    color:#fff;border-radius:18px;padding:38px 44px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    box-shadow:0 18px 40px -22px rgba(0,0,0,.4)}
+  header.hero h1{font-family:var(--display);font-weight:700;font-size:40px;line-height:1.05;margin:0 0 6px}
+  header.hero .sub{font-size:15px;opacity:.92;letter-spacing:.4px;text-transform:uppercase}
+  header.hero .meta{text-align:right;font-size:13px}
+  header.hero .meta strong{display:block;font-size:18px;font-family:var(--display);margin-bottom:2px}
+  h2{font-family:var(--display);font-weight:700;font-size:28px;margin:48px 0 6px}
+  h2 .accent{display:inline-block;width:42px;height:4px;background:var(--marca-2);border-radius:2px;vertical-align:middle;margin-right:14px;transform:translateY(-6px)}
+  .sub-h2{color:var(--tinta-sub);font-size:14px;margin:0 0 22px}
+  .decision-panel{margin-top:26px;background:#fff;border:1px solid var(--linha);border-radius:16px;padding:22px 24px;box-shadow:0 8px 28px -16px rgba(0,0,0,.22)}
+  .decision-panel.ok{background:linear-gradient(135deg,#fff,var(--areia))}
+  .dp-title{font-family:var(--display);font-size:21px;font-weight:700;margin-bottom:4px}
+  .dp-resumo{font-family:var(--ui);font-size:13px;font-weight:500;color:var(--tinta-sub);margin-left:8px}
+  .decision-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+  .decision-card{border:1px solid var(--linha);border-radius:12px;padding:16px 18px;position:relative;background:#fff}
+  .decision-card:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;border-radius:4px 0 0 4px}
+  .decision-card.red:before{background:#d9534f}.decision-card.yellow:before{background:#e0a800}.decision-card.green:before{background:var(--marca-2)}
+  .decision-card.red{background:#fdf5f4}
+  .dc-head{font-size:15px;margin-bottom:6px}.dc-why{font-size:13px;color:var(--tinta-sub);margin-bottom:4px}
+  .dc-impact{font-size:13px;font-weight:600;margin-bottom:12px}
+  .dc-btn{font:inherit;font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid var(--marca-dark);background:#fff;color:var(--marca-dark);cursor:pointer}
+  .dc-btn:hover{background:var(--marca);color:#fff;border-color:var(--marca)}
+  .metrics-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:10px;margin-top:18px}
+  @media (max-width:1100px){.metrics-grid{grid-template-columns:repeat(5,1fr)}}
+  @media (max-width:680px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:#fff;border:1px solid var(--linha);border-radius:11px;padding:13px;position:relative}
+  .metric.crm{background:var(--areia);border-color:var(--marca-2)}
+  .m-label{font-size:10px;color:var(--tinta-sub);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;display:flex;align-items:center;gap:5px;line-height:1.2;min-height:24px}
+  .m-badge{background:var(--marca-2);color:#fff;font-size:8px;padding:1px 5px;border-radius:9px;letter-spacing:.3px}
+  .m-value{font-family:var(--display);font-size:22px;font-weight:700;line-height:1;white-space:nowrap}
+  .metric.crm .m-value{color:var(--marca-dark)}
+  .m-sub{font-size:10px;color:var(--tinta-sub);margin-top:6px;line-height:1.3}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px -10px rgba(0,0,0,.18);margin-top:18px}
+  th,td{padding:12px 16px;text-align:left;font-size:14px}
+  thead th{background:var(--areia);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:12px;border-bottom:2px solid var(--marca-dark)}
+  tbody tr+tr td{border-top:1px solid var(--linha)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .status-on{color:var(--marca-dark);font-weight:600}
+  .fontes{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+  .fonte-row{display:flex;align-items:center;gap:16px}
+  .fonte-nome{min-width:200px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .fonte-tag{background:var(--marca);color:#fff;font-size:9px;padding:2px 7px;border-radius:10px;font-weight:600;letter-spacing:.3px}
+  .fonte-bar{flex:1;height:26px;background:var(--areia);border-radius:7px;overflow:hidden}
+  .fonte-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--marca-2),var(--marca));border-radius:7px;transition:width .4s}
+  .fonte-val{min-width:80px;text-align:right;font-family:var(--display);font-size:19px;font-weight:700}
+  .fonte-pct{font-family:var(--ui);font-size:12px;color:var(--tinta-sub);font-weight:600}
+  .fonte-fech{min-width:130px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+  .fech{font-size:12px;font-weight:700;padding:2px 9px;border-radius:11px}
+  .fech-hot{background:#1f7a3d;color:#fff}
+  .fech-ok{background:var(--areia);color:var(--marca-dark);border:1px solid var(--marca-2)}
+  .fech-low{background:#fbe6e2;color:#c0492e}
+  .fech-n{font-size:10px;color:var(--tinta-sub)}
+  .funnel{display:flex;align-items:flex-end;gap:8px;margin-top:22px;height:170px}
+  .funnel .stage{flex:1;background:var(--areia);border-radius:10px 10px 4px 4px;border:1px solid var(--linha);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;text-align:center}
+  .funnel .stage .n{font-family:var(--display);font-size:24px;font-weight:700}
+  .funnel .stage .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--tinta-sub);margin-top:4px;line-height:1.2}
+  .funnel .stage.win{background:linear-gradient(180deg,#fff 0%,var(--areia) 100%);border-color:var(--marca-2)}
+  .funnel .stage.win .n{color:var(--marca-dark)}
+  footer{margin-top:64px;padding:20px 0;border-top:1px solid var(--linha);font-size:12px;color:var(--tinta-sub);text-align:center}
+  footer .marca{font-family:var(--display);color:var(--marca-dark);font-weight:700;font-size:14px}
+__NAV_CSS__
+</style></head><body>
+<div class="page">
+  __NAV_HTML__
+  <header class="hero">
+    <div><div class="sub">__CLIENTE__</div><h1>Cockpit de Captação<br/>e Serviço</h1></div>
+    <div class="meta"><strong>__DATA_HOJE__</strong>Google Ads → CRM (USD)<br/>Funil de serviço local</div>
+  </header>
+
+  __FUNIL_HTML__
+
+  __PAINEL_HTML__
+
+  __FONTES_HTML__
+
+  __TRAFEGO_HTML__
+
+  <h2><span class="accent"></span>Campanhas ativas</h2>
+  <p class="sub-h2">Campanhas Google rodando (14 dias).</p>
+  <table><thead><tr><th>Campanha</th><th class="num">Gasto</th><th class="num">Conv.</th><th class="num">Cliques</th><th>Status</th></tr></thead>
+  <tbody>__CAMP_ROWS__</tbody></table>
+
+  <footer><span class="marca">__CLIENTE__</span> · Cockpit operacional · gerado __GERADO__<br/>
+  Fontes: Google Ads API · CRM Funnels (funil Inbound) · regra: lead = oportunidade viva no funil.</footer>
+</div>
+<script>
+  const CLIENTE="Floor to Ceiling";
+  document.querySelectorAll('.dc-btn').forEach(function(b){
+    b.onclick=function(){
+      const instr='@mestre '+b.dataset.acao+' — '+b.dataset.det+' · cliente '+CLIENTE+
+        ' (via cockpit '+new Date().toLocaleDateString('pt-BR')+')';
+      if(navigator.clipboard) navigator.clipboard.writeText(instr).catch(function(){});
+      const old=b.textContent; b.textContent='✓ copiado'; b.style.background='var(--marca)'; b.style.color='#fff';
+      setTimeout(function(){ b.textContent=old; b.style.background=''; b.style.color=''; },1600);
+    };
+  });
+</script>
+</body></html>

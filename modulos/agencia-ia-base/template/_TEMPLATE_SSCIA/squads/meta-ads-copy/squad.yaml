@@ -1,0 +1,110 @@
+name: meta-ads-copy
+display_name: "🎯 Meta Ads Copy"
+version: "2.0"
+description: "Copy de alta conversão pra Meta Ads (Facebook + Instagram). 33 lendários do copywriting + chief orquestrador. Cada peça passa por 3+ pares de olhos lendários antes de fechar."
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  niche: "{{CLIENTE_NICHO}}"
+  channel: Meta Ads (Facebook + Instagram)
+  formats:
+    - "Carrossel (10 cards 1:1 ou 4:5)"
+    - "Estático Feed (1:1, 4:5)"
+    - "Stories (9:16)"
+    - "Reels (9:16, 15-30s)"
+    - "Texto principal (primary text Meta Ads)"
+    - "Headline + Description"
+    - "CTA + landing page text"
+
+# 33 lendários disponíveis no roster (ver agents/)
+# CHIEF roteia entre 2-3 por peça conforme situação:
+routing_guide:
+  headline_prospeccao_fria: ["john-caples", "gary-halbert", "eugene-schwartz", "alex-hormozi"]
+  carrossel_storytelling: ["joe-sugarman", "russell-brunson", "andre-chaperon", "robert-cialdini"]
+  reels_hook_payoff_15s: ["gary-halbert", "russell-brunson", "joe-sugarman", "sabri-suby"]
+  stories_urgencia_scarcity: ["dan-kennedy", "gary-halbert", "alex-hormozi", "sabri-suby"]
+  estatico_conversao_direta: ["sabri-suby", "alex-hormozi", "eugene-schwartz", "robert-cialdini"]
+  vsl_long_form: ["stefan-georgi", "jon-benson", "clayton-makepeace", "parris-lampropoulos"]
+  email_sequencia: ["ben-settle", "andre-chaperon", "frank-kern", "ry-schwartz"]
+  pitch_high_ticket: ["oren-klaff", "alex-hormozi", "russell-brunson"]
+  copy_pesquisa_avatar: ["joanna-wiebe", "todd-brown", "blair-warren"]
+  big_idea_breakthrough: ["eugene-schwartz", "todd-brown", "gary-bencivenga"]
+  voz_cultural_BR: ["evaldo-albuquerque"]
+  cta_microscopia: ["dan-kennedy", "claude-hopkins", "rosser-reeves"]
+
+pipeline:
+  - step: 1
+    name: briefing
+    agent: copy-master-chief
+    task: briefing.md
+    type: checkpoint
+    description: "COPY-MASTER-CHIEF recebe briefing, identifica formato + objetivo + ângulo, escolhe 2-3 lendários do routing_guide. Valida brand-profile.content_engine.ads_enabled == true."
+
+  - step: 2
+    name: producao-rascunho
+    agent: copy-master-chief
+    task: producao-rascunho.md
+    type: execution
+    description: "CHIEF roteia pros lendários escolhidos. Cada um produz draft de hook + body + CTA na sua voz autoral"
+
+  - step: 3
+    name: revisao-cruzada
+    agent: copy-master-chief
+    task: revisao-cruzada.md
+    type: execution
+    description: "Drafts passam por 2 outros lendários revisores (escolha estratégica do CHIEF). Resultado: best-of-merge"
+
+  - step: 4
+    name: traducao-cultural-br
+    agent: evaldo-albuquerque
+    task: traducao-cultural-br.md
+    type: execution
+    optional: true
+    description: "Evaldo Albuquerque adapta pra registro brasileiro do nicho-alvo (pula se language=en)"
+
+  - step: 5
+    name: revisao-pesquisa
+    agent: joanna-wiebe
+    task: revisao-pesquisa.md
+    type: execution
+    description: "Joanna Wiebe valida que copy usa LINGUAGEM REAL do avatar (não jargão de marketeiro)"
+
+  - step: 6
+    name: visual_generation
+    agent: ad-visual
+    task: visual-generation.md
+    type: execution
+    description: "AD-VISUAL gera assets visuais (vídeo UGC / static / carousel / TV spot) via skill higgsfield-content/pipelines/generate_ad_creative.py. Cada copy variation pode ter visual próprio."
+
+  - step: 7
+    name: post_production
+    agent: ad-post
+    task: post-production.md
+    type: execution
+    optional: true
+    description: "AD-POST dispara squad video-editor pra polir assets de vídeo (legendas + CTA overlay + watermark + color grade)"
+
+  - step: 8
+    name: entrega
+    agent: copy-master-chief
+    task: entrega.md
+    type: checkpoint
+    description: "CHIEF consolida pacote final: copy + visual + variações A/B + push pro worker /admin/queue com kind=ad_creative"
+
+output:
+  directory: "./output/"
+  format: markdown + mp4 + jpg
+  files:
+    - "carrosseis/"
+    - "estaticos/"
+    - "stories/"
+    - "reels/"
+    - "texto-principal/"
+    - "variacoes-ab/"
+    - "ads/<campaign>/copy.md"
+    - "ads/<campaign>/visuals/"
+    - "ads/<campaign>/polished/"
+    - "_pacote-final.md"

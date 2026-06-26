@@ -1,0 +1,22 @@
+name: nano_banana_2k_image
+playbook: cinematic-content
+description: |
+  Imagem lifestyle 2K pra Grupo A (5/sem por cliente). Carrossel ou single.
+  Cenas estáticas: detalhe de varanda, mesa da cozinha, vista do quarto, área de lazer.
+  Família ou objeto, NUNCA rosto identificável.
+duration: null
+aspect_ratio: "1:1"
+model: nano-banana-2k
+required_params:
+  - subject
+  - mood
+defaults:
+  lighting: golden hour, soft window light, cinematic warm tone
+  framing: rule of thirds, depth of field, professional real estate
+  style: photorealistic, 2K resolution, magazine-quality
+prompt_template: |
+  Photorealistic image of {subject}.
+  {mood}. {framing}, {lighting}, {style}.
+  Brazilian MCMV apartment context, contemporary middle-class lifestyle,
+  no identifiable face, no text, no logo.
+  1:1 square aspect ratio, magazine quality.

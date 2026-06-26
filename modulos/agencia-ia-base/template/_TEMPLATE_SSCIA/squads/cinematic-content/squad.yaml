@@ -1,0 +1,96 @@
+name: cinematic-content
+display_name: "🎬 Cinematic Content (Grupo A)"
+version: "1.0"
+description: "Conteúdo cinemático pra clientes imobiliários MCMV (Grupo A): vídeo 30s + imagem lifestyle. Engine: skill global higgsfield-content (Kling 3.0 / Seedance 2.0 / Nano Banana 2 2K). Aprovação canônica via dashboard {{SEO_WORKER_DOMAIN}}."
+author: {{CLIENTE_NOME}}
+language: {{IDIOMA_PUBLICACAO}}
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  niche: "{{NICHO_PRINCIPAL}}"
+  group: "{{CONTENT_GROUP}}"
+  playbook: "{{CONTENT_PLAYBOOK}}"
+  cadence:
+    videos_per_week: 3
+    images_per_week: 5
+  formats:
+    - "Vídeo cinematic 30s vertical 9:16 (hero shot empreendimento)"
+    - "Vídeo lifestyle 30s vertical 9:16 (uso do apartamento)"
+    - "Imagem lifestyle 2K (Nano Banana 2K)"
+  asset_constraints:
+    - "NUNCA mostrar rosto identificável (compliance imobiliário)"
+    - "Disclaimer Lei 4.591/64 obrigatório em peças com valores"
+    - "Construtora aparece como texto rodapé, não logo gráfico"
+
+# Agentes:
+agents:
+  - codename: CINE
+    file: cine.agent.md
+    inspired_by: "Cinematographer (Roger Deakins-school)"
+    role: "Cinematographer / shot list director — escolhe ângulo, lente, movimento de câmera"
+  - codename: AURA
+    file: aura.agent.md
+    inspired_by: "Storyboard artist (Pixar/DreamWorks-school)"
+    role: "Storyboard / 30s narrative beats"
+  - codename: GLOW
+    file: glow.agent.md
+    inspired_by: "Real estate photographer (Architectural Digest-school)"
+    role: "Image curator / 5 imagens lifestyle/sem"
+  - codename: ECHO-MCMV
+    file: echo-mcmv.agent.md
+    inspired_by: "Brazilian copywriter MCMV (Stéfano Willig-school)"
+    role: "Copy pt-BR emocional MCMV, disclaimer compliance Lei 4.591/64"
+
+pipeline:
+  - step: 1
+    name: briefing
+    agent: CINE
+    task: briefing.md
+    type: checkpoint
+    description: "CINE recebe tema da semana (ex: fachada / sala / varanda / lazer / vida no condomínio) + lê brand-profile + content_engine"
+
+  - step: 2
+    name: moodboard
+    agent: GLOW
+    task: moodboard.md
+    type: execution
+    description: "GLOW gera 5 imagens lifestyle 2K via skill higgsfield-content/pipelines/generate_lifestyle_image.py"
+
+  - step: 3
+    name: shot_list
+    agent: AURA
+    task: shot-list.md
+    type: execution
+    description: "AURA monta 3 storyboards 30s (hero + lifestyle 1 + lifestyle 2) com cinematography notes"
+
+  - step: 4
+    name: video_gen
+    agent: CINE
+    task: video-gen.md
+    type: execution
+    description: "CINE chama skill higgsfield-content/pipelines/generate_cinematic_video.py pra cada storyboard. Output: 3 mp4 9:16 + manifests."
+
+  - step: 5
+    name: copy
+    agent: ECHO-MCMV
+    task: copy.md
+    type: execution
+    description: "ECHO-MCMV escreve caption pt-BR + disclaimer Lei 4.591/64 obrigatório quando valores aparecem"
+
+  - step: 6
+    name: entrega
+    agent: CINE
+    task: entrega.md
+    type: checkpoint
+    description: "CINE consolida pacote (3 vídeos + 5 imagens + captions) + push pro worker /admin/queue → status:pending no dashboard"
+
+output:
+  directory: "./output/"
+  format: mp4 + jpg + markdown
+  files:
+    - "videos/"
+    - "images/"
+    - "captions/"
+    - "manifests/"
+    - "_pacote-final.md"

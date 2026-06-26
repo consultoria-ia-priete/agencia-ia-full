@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<title>ConsultorIA — Cockpit Webinar · __DATA_HOJE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marca:__C_PRIMARY__;--marca-2:__C_SECONDARY__;--marca-dark:__C_PDARK__;--marca-darker:__C_PDARKER__;
+    --areia:__C_AREIA__;--tinta:#1f1a16;--tinta-sub:#5d5650;--linha:__C_LINHA__;
+    --display:'Playfair Display',serif;--ui:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fafaf7;color:var(--tinta);font-family:var(--ui);font-size:16px;line-height:1.55}
+  .page{max-width:1180px;margin:0 auto;padding:42px 56px 72px}
+  header.hero{background:linear-gradient(135deg,var(--marca) 0%,var(--marca-dark) 60%,var(--marca-darker) 100%);
+    color:#fff;border-radius:18px;padding:38px 44px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    box-shadow:0 18px 40px -22px rgba(0,0,0,.4)}
+  header.hero h1{font-family:var(--display);font-weight:700;font-size:42px;line-height:1.05;margin:0 0 6px}
+  header.hero .sub{font-size:15px;opacity:.92;letter-spacing:.4px;text-transform:uppercase}
+  header.hero .meta{text-align:right;font-size:13px}
+  header.hero .meta strong{display:block;font-size:18px;font-family:var(--display);margin-bottom:2px}
+  h2{font-family:var(--display);font-weight:700;font-size:28px;margin:48px 0 6px}
+  h2 .accent{display:inline-block;width:42px;height:4px;background:var(--marca-2);border-radius:2px;vertical-align:middle;margin-right:14px;transform:translateY(-6px)}
+  .sub-h2{color:var(--tinta-sub);font-size:14px;margin:0 0 22px}
+  /* painel decisão */
+  .decision-panel{margin-top:26px;background:#fff;border:1px solid var(--linha);border-radius:16px;padding:22px 24px;box-shadow:0 8px 28px -16px rgba(0,0,0,.22)}
+  .decision-panel.ok{background:linear-gradient(135deg,#fff,var(--areia))}
+  .dp-title{font-family:var(--display);font-size:21px;font-weight:700;margin-bottom:4px}
+  .dp-resumo{font-family:var(--ui);font-size:13px;font-weight:500;color:var(--tinta-sub);margin-left:8px}
+  .decision-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+  .decision-card{border:1px solid var(--linha);border-radius:12px;padding:16px 18px;position:relative;background:#fff}
+  .decision-card:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;border-radius:4px 0 0 4px}
+  .decision-card.red:before{background:#d9534f}.decision-card.yellow:before{background:#e0a800}.decision-card.green:before{background:var(--marca-2)}
+  .decision-card.red{background:#fdf5f4}
+  .dc-head{font-size:15px;margin-bottom:6px}.dc-why{font-size:13px;color:var(--tinta-sub);margin-bottom:4px}
+  .dc-impact{font-size:13px;font-weight:600;margin-bottom:12px}
+  .dc-btn{font:inherit;font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid var(--marca-dark);background:#fff;color:var(--marca-dark);cursor:pointer}
+  .dc-btn:hover{background:var(--marca);color:#fff;border-color:var(--marca)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+  .kpi{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:20px 22px;position:relative;overflow:hidden}
+  .kpi:before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--marca)}
+  .kpi.alert:before{background:#d9534f}
+  .kpi .label{font-size:12px;color:var(--tinta-sub);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+  .kpi .value{font-family:var(--display);font-size:34px;font-weight:700;line-height:1}
+  .kpi.alert .value{color:#d9534f}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px -10px rgba(0,0,0,.18);margin-top:18px}
+  th,td{padding:12px 16px;text-align:left;font-size:14px}
+  thead th{background:var(--areia);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:12px;border-bottom:2px solid var(--marca-dark)}
+  tbody tr+tr td{border-top:1px solid var(--linha)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .status-on{color:var(--marca-dark);font-weight:600}
+  .metrics-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:10px;margin-top:18px}
+  @media (max-width:1100px){.metrics-grid{grid-template-columns:repeat(5,1fr)}}
+  @media (max-width:680px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:#fff;border:1px solid var(--linha);border-radius:11px;padding:13px 13px;position:relative}
+  .metric.crm{background:var(--areia);border-color:var(--marca-2)}
+  .m-label{font-size:10px;color:var(--tinta-sub);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;display:flex;align-items:center;gap:5px;line-height:1.2;min-height:24px}
+  .m-badge.crm{background:var(--marca-2);color:#fff;font-size:8px;padding:1px 5px;border-radius:9px;letter-spacing:.3px}
+  .m-value{font-family:var(--display);font-size:23px;font-weight:700;line-height:1;color:var(--tinta);white-space:nowrap}
+  .metric.crm .m-value{color:var(--marca-dark)}
+  .m-sub{font-size:10px;color:var(--tinta-sub);margin-top:6px;line-height:1.3}
+  .funnel{display:flex;align-items:flex-end;gap:8px;margin-top:22px;height:170px}
+  .funnel .stage{flex:1;background:var(--areia);border-radius:10px 10px 4px 4px;border:1px solid var(--linha);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;text-align:center}
+  .funnel .stage .n{font-family:var(--display);font-size:24px;font-weight:700}
+  .funnel .stage .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--tinta-sub);margin-top:4px;line-height:1.2}
+  .funnel .stage.win{background:linear-gradient(180deg,#fff 0%,var(--areia) 100%);border-color:var(--marca-2)}
+  .funnel .stage.win .n{color:var(--marca-dark)}
+  footer{margin-top:64px;padding:20px 0;border-top:1px solid var(--linha);font-size:12px;color:var(--tinta-sub);text-align:center}
+  footer .marca{font-family:var(--display);color:var(--marca-dark);font-weight:700;font-size:14px}
+__NAV_CSS__
+  .refresh-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;
+    background:#fff;border:1px solid var(--linha);border-radius:12px;padding:12px 18px}
+  .rb-left{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--tinta-sub)}
+  .rb-dot{width:9px;height:9px;border-radius:50%;background:var(--marca-2);box-shadow:0 0 8px var(--marca-2)}
+  .rb-age{font-weight:600}
+  .rb-age.stale{color:#c0492e}
+  .rb-btn{font:inherit;font-size:14px;font-weight:600;padding:9px 18px;border-radius:9px;border:1px solid var(--marca-dark);
+    background:var(--marca);color:#fff;cursor:pointer}
+  .rb-btn:hover{filter:brightness(1.05)}
+  .rb-help{margin-top:8px;font-size:12px;color:var(--tinta-sub);background:var(--areia);border-radius:8px;padding:10px 14px;display:none}
+  .rb-help.show{display:block}
+  .rb-help code{font-family:Menlo,monospace;background:#fff;padding:1px 5px;border-radius:4px}
+</style></head><body>
+<div class="page">
+  __NAV_HTML__
+  <header class="hero">
+    <div><div class="sub">__CLIENTE__</div><h1>Cockpit do Webinar<br/>ConsultorIA</h1></div>
+    <div class="meta"><strong>__DATA_HOJE__</strong>Captação webinar → High Ticket<br/>Meta Ads + CRM (CRM Funnels)</div>
+  </header>
+
+  <div class="refresh-bar">
+    <div class="rb-left">
+      <span class="rb-dot"></span>
+      <span>Dados de <b id="rb-quando">__GERADO__</b></span>
+      <span class="rb-age" id="rb-age"></span>
+    </div>
+    <button class="rb-btn" id="rb-btn" title="Re-coleta o funil ao vivo e recarrega">🔄 Atualizar agora</button>
+  </div>
+  <div class="rb-help" id="rb-help">
+    Para puxar os dados ao vivo, dê <b>duplo-clique</b> no atalho <code>🔄 Atualizar Cockpit Webinar</code> na sua Área de Trabalho.
+    Ele re-coleta o funil do CRM + tráfego e reabre esta página já atualizada. <i>(O navegador não deixa um arquivo local rodar isso sozinho — por isso o atalho.)</i>
+  </div>
+
+  __FUNIL_HTML__
+
+  __PAINEL_HTML__
+
+  <h2><span class="accent"></span>Pulso da captação</h2>
+  <p class="sub-h2">Investimento e entrega das campanhas de webinar.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="label">Investido (14 dias)</div><div class="value">__KPI_GASTO14__</div></div>
+    <div class="kpi alert"><div class="label">Gasto ontem</div><div class="value">__KPI_ONTEM__</div></div>
+    <div class="kpi"><div class="label">Campanhas ativas</div><div class="value">__KPI_ATIVAS__</div></div>
+    <div class="kpi"><div class="label">No funil webinar</div><div class="value">__KPI_FUNIL__</div></div>
+  </div>
+
+  __TRAFEGO_HTML__
+
+  <h2><span class="accent"></span>Campanhas ativas</h2>
+  <p class="sub-h2">Criativos de webinar rodando. Gasto e leads dos últimos 14 dias.</p>
+  <table><thead><tr><th>Campanha</th><th class="num">Gasto 14d</th><th class="num">Leads</th><th>Status</th></tr></thead>
+  <tbody>__CAMP_ROWS__</tbody></table>
+
+  <footer><span class="marca">ConsultorIA</span> · Cockpit do webinar · gerado __GERADO__<br/>
+  Fontes: Meta Marketing API · CRM Funnels (Funil Webinar ConsultorIA) · regra: lead = oportunidade no funil.</footer>
+</div>
+<script>
+  const CLIENTE="ConsultorIA";
+  const COLETADO_EM="__GERADO_ISO__";
+  document.querySelectorAll('.dc-btn').forEach(function(b){
+    b.onclick=function(){
+      const instr='@mestre '+b.dataset.acao+' — '+b.dataset.det+' · cliente '+CLIENTE+
+        ' (via cockpit '+new Date().toLocaleDateString('pt-BR')+')';
+      if(navigator.clipboard) navigator.clipboard.writeText(instr).catch(function(){});
+      const old=b.textContent; b.textContent='✓ copiado'; b.style.background='var(--marca)'; b.style.color='#fff';
+      setTimeout(function(){ b.textContent=old; b.style.background=''; b.style.color=''; },1600);
+    };
+  });
+  // Barra de atualização: idade dos dados + botão que aponta o atalho
+  (function(){
+    const age=document.getElementById('rb-age');
+    try{
+      const t=new Date(COLETADO_EM), now=new Date();
+      const min=Math.round((now-t)/60000);
+      let txt;
+      if(min<1) txt='(agora há pouco)';
+      else if(min<60) txt='(há '+min+' min)';
+      else txt='(há '+Math.floor(min/60)+'h'+(min%60? ' '+(min%60)+'min':'')+')';
+      age.textContent=txt;
+      if(min>20) age.classList.add('stale');  // >20min = pode estar velho durante o webinar
+    }catch(e){}
+    const btn=document.getElementById('rb-btn'), help=document.getElementById('rb-help');
+    btn.onclick=function(){
+      help.classList.add('show');
+      // tenta abrir o atalho local (alguns navegadores bloqueiam — daí a instrução)
+      try{ window.location.href='file:///Users/Shared/agency-pulse/atualizar-cockpit-alex.command'; }catch(e){}
+    };
+  })();
+</script>
+</body></html>

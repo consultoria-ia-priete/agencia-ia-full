@@ -1,0 +1,122 @@
+name: viral-reels-seo
+display_name: "📱 Viral Reels SEO (Grupo B + B')"
+version: "1.0"
+description: "Reel 7s vertical DoP + copy 1.200 chars SEO. Serve cliente de serviço local en-US (Grupo B) e cliente de autoridade/infoproduto pt-BR (Grupo B'). Engine: skill global higgsfield-content. Aprovação canônica via dashboard."
+author: {{CLIENTE_NOME}}
+language: {{IDIOMA_PUBLICACAO}}
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  niche: "{{NICHO_PRINCIPAL}}"
+  group: "{{CONTENT_GROUP}}"
+  playbook: "{{CONTENT_PLAYBOOK}}"
+  sub_playbook: "{{CONTENT_SUB_PLAYBOOK}}"
+  cadence:
+    videos_per_week: 1
+  formats:
+    - "Reel 7s vertical 9:16 DoP (raw shot, sem rosto, ângulo canônico)"
+    - "Caption SEO 1.200 chars (Grupo B local) OU 1.200 chars autoridade (Grupo B' autoridade pt-BR)"
+    - "Split-screen training opcional (apenas Grupo B' autoridade sub_playbook=mixed)"
+
+# 5 princípios INVIOLÁVEIS pra dop-7s-reel (Grupo B):
+viral_dop_principles:
+  - "Câmera NO produto/processo, NUNCA no rosto"
+  - "Ângulo incomum obrigatório (top-down | floor-level | extreme close-up)"
+  - "Gesto autêntico de trabalho real (sem encenação)"
+  - "Texto emocional opcional (máx 6 palavras, fonte serif grande)"
+  - "Copy de 1.200 chars carrega o SEO + conversão"
+
+# Agentes:
+agents:
+  - codename: GRIP
+    file: grip.agent.md
+    inspired_by: "DoP shooting style (Higgsfield DoP exclusive)"
+    role: "Chief — escolhe ângulo canônico + orquestra pipeline"
+  - codename: LENS
+    file: lens.agent.md
+    inspired_by: "Shot composer (Wes Anderson framing)"
+    role: "Monta prompt DoP cumprindo os 5 princípios"
+  - codename: SPLIT
+    file: split.agent.md
+    inspired_by: "Split-screen TikTok educator format"
+    role: "APENAS Grupo B' autoridade sub_playbook=mixed — roteiriza A-roll + B-roll"
+  - codename: INK-SEO
+    file: ink-seo.agent.md
+    inspired_by: "SEO copywriter (local services US)"
+    role: "Copy 1.200 chars SEO local (en-US) — cliente de serviço local"
+  - codename: INK-AUTHORITY
+    file: ink-authority.agent.md
+    inspired_by: "Halbert + Hormozi voice"
+    role: "Copy 1.200 chars autoridade (pt-BR) — cliente de autoridade/infoproduto, voz do cliente, CTA rotativo"
+  - codename: ECHO-POLISH
+    file: echo-polish.agent.md
+    inspired_by: "Editorial polisher"
+    role: "Polish final: hashtags + CTA + geo SEO"
+
+pipeline:
+  - step: 1
+    name: briefing
+    agent: GRIP
+    task: briefing.md
+    type: checkpoint
+    description: "GRIP lê brand-profile + content_engine. Identifica sub_playbook (dop-7s-reel | mixed). Decide se é DoP puro ou split-screen."
+
+  - step: 2
+    name: angle_pick
+    agent: GRIP
+    task: angle-pick.md
+    type: execution
+    description: "GRIP escolhe ângulo canônico do reel (top-down | floor-level | extreme-closeup) baseado no nicho da semana"
+
+  - step: 3
+    name: dop_prompt
+    agent: LENS
+    task: dop-prompt.md
+    type: execution
+    description: "LENS monta prompt DoP usando template do higgsfield-content (dop_top_down | dop_floor_level | dop_extreme_closeup). Validators no_face_no_person + dop_valid_angle aplicam."
+
+  - step: 4
+    name: video_gen
+    agent: LENS
+    task: video-gen.md
+    type: execution
+    description: "LENS chama generate_viral_reel.py. Output: mp4 7s 9:16 + manifest"
+
+  - step: 5
+    name: seo_copy
+    agent: "{{COPY_AGENT}}"  # INK-SEO se Grupo B local, INK-AUTHORITY se B-prime autoridade
+    task: seo-copy.md
+    type: execution
+    description: "Copywriter especializado escreve 1.200 chars puxando do brand-profile (voice + audience + seo + publishing.cta + hashtags)"
+
+  - step: 6
+    name: split_screen
+    agent: SPLIT
+    task: split-screen.md
+    type: execution
+    optional: true
+    description: "APENAS B-prime autoridade sub_playbook=mixed. Roteiriza A-roll (cliente falando OU Soul 2.0) + B-roll lateral (slide/screen/exemplo). Reservado caso-a-caso."
+
+  - step: 7
+    name: polish
+    agent: ECHO-POLISH
+    task: polish.md
+    type: execution
+    description: "ECHO-POLISH revisa caption: hashtags do brand-profile, CTA final, geo SEO, hashtag mix local + nicho"
+
+  - step: 8
+    name: entrega
+    agent: GRIP
+    task: entrega.md
+    type: checkpoint
+    description: "GRIP push pro worker /admin/queue com media_type=video/mp4, status=pending. Dashboard recebe."
+
+output:
+  directory: "./output/"
+  format: mp4 + markdown
+  files:
+    - "videos/"
+    - "captions/"
+    - "manifests/"
+    - "_pacote-final.md"

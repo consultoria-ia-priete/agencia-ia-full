@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Negócio.IA — Diagnóstico do Perfil de Empreendedor Digital</title>
+    <meta name="description" content="Descubra em 2 minutos se você tem o perfil para faturar de R$5K a R$15K por mês vendendo sites que a IA cria em 10 minutos." />
+    <meta name="author" content="Alex Priete" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="theme-color" content="#140a08" />
+    <link rel="canonical" href="https://SEU-DOMINIO.com/" />
+
+    <meta property="og:title" content="Negócio.IA — Diagnóstico Gratuito" />
+    <meta property="og:description" content="Descubra seu perfil para faturar com sites IA em 2 minutos." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://SEU-DOMINIO.com/" />
+    <meta property="og:image" content="https://SEU-DOMINIO.com/images/og_image.png" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{SEU_INSTAGRAM}}" />
+    <meta name="twitter:title" content="Negócio.IA — Diagnóstico Gratuito" />
+    <meta name="twitter:description" content="Descubra seu perfil para faturar com sites IA em 2 minutos." />
+    <meta name="twitter:image" content="https://SEU-DOMINIO.com/images/og_image.png" />
+
+    <link rel="preconnect" href="https://{{TRACKING_DOMAIN}}" crossorigin />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+
+    <!-- Meta Pixel — client-side (server-side CAPI dispara via {{TRACKING_DOMAIN}}/tracker) -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{META_PIXEL_ID}}');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel -->
+
+    <!-- JSON-LD: Organization, WebSite, WebPage, Quiz schema. Habilita rich results
+         pra "Diagnóstico" no Google e melhora ranking pra termos como "quiz negócio digital". -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://SEU-DOMINIO.com/#organization",
+          "name": "Alex Priete · ConsultorIA",
+          "url": "https://SEU-DOMINIO.com",
+          "founder": {
+            "@type": "Person",
+            "name": "Alex Priete",
+            "url": "https://www.instagram.com/{{SEU_INSTAGRAM}}",
+            "sameAs": ["https://www.instagram.com/{{SEU_INSTAGRAM}}"]
+          },
+          "logo": "https://SEU-DOMINIO.com/favicon.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://SEU-DOMINIO.com/#website",
+          "url": "https://SEU-DOMINIO.com/",
+          "name": "Negócio.IA — Diagnóstico Gratuito",
+          "publisher": { "@id": "https://SEU-DOMINIO.com/#organization" },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://SEU-DOMINIO.com/#webpage",
+          "url": "https://SEU-DOMINIO.com/",
+          "name": "Negócio.IA — Diagnóstico do Perfil de Empreendedor Digital",
+          "description": "Quiz gratuito que descobre se você tem o perfil para faturar de R$5K a R$15K por mês vendendo sites que a IA cria em 10 minutos.",
+          "inLanguage": "pt-BR",
+          "isPartOf": { "@id": "https://SEU-DOMINIO.com/#website" },
+          "about": {
+            "@type": "Thing",
+            "name": "Negócio digital com IA"
+          }
+        },
+        {
+          "@type": "Quiz",
+          "name": "Diagnóstico do Perfil de Empreendedor Digital",
+          "about": "Identifica se o usuário tem perfil de Pioneiro, Estrategista ou Construtor para vender sites criados por IA",
+          "educationalLevel": "Beginner",
+          "inLanguage": "pt-BR",
+          "url": "https://SEU-DOMINIO.com/",
+          "provider": { "@id": "https://SEU-DOMINIO.com/#organization" }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="dark">
+    <noscript>
+      <img height="1" width="1" style="display:none" alt=""
+           src="https://www.facebook.com/tr?id={{META_PIXEL_ID}}&ev=PageView&noscript=1" />
+    </noscript>
+    <div id="root"></div>
+    <!-- Cross-subdomain tracking init: hits the tracking stack middleware,
+         which sets _krob_sid/_fbp/_fbc/_krob_eid cookies on .SEU-DOMINIO.com
+         (parent domain) so they're readable from this subdomain too. -->
+    <img src="https://{{TRACKING_DOMAIN}}/init" alt="" width="1" height="1"
+         style="position:absolute;left:-9999px;top:-9999px"
+         referrerpolicy="no-referrer-when-downgrade" />
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

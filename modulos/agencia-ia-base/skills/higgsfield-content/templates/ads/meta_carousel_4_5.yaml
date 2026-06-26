@@ -1,0 +1,23 @@
+name: meta_carousel_4_5
+kind: ads
+description: |
+  Imagem 4:5 retrato pra ads carrossel Meta (mais espaço vertical no feed).
+  Imobiliário: variação de ângulo do mesmo apartamento (fachada / sala / quarto / varanda / lazer).
+duration: null
+aspect_ratio: "4:5"
+model: nano-banana-2k
+required_params:
+  - subject
+  - carousel_slide_number
+  - total_slides
+defaults:
+  lighting: cohesive across all slides (golden hour OR studio daylight)
+  framing: same composition rules across carousel
+  style: editorial real estate, magazine quality
+prompt_template: |
+  4:5 portrait image — slide {carousel_slide_number}/{total_slides} of Meta Ads carousel.
+  Subject: {subject}.
+  {lighting}, {framing}, {style}.
+  Consistent visual language with sibling slides — same lighting tone,
+  same depth of field, same color palette.
+  No text in image, no logo overlay.

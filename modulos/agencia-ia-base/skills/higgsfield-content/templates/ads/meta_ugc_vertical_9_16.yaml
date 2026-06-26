@@ -1,0 +1,26 @@
+name: meta_ugc_vertical_9_16
+kind: ads
+description: |
+  Ad creative vertical 9:16 estilo UGC pra Meta Ads (IG Reels, FB Reels, Stories).
+  Usado pra: Ballarin, Investbens, Alex/ConsultorIA (clientes com ads_enabled=true).
+  Hook nos primeiros 3s. Mostra produto/serviço em uso. Pode ter texto sobreposto curto.
+duration: 15
+aspect_ratio: "9:16"
+model: kling-3.0
+required_params:
+  - hook_visual
+  - product_or_service
+  - cta_visual
+defaults:
+  camera_feel: handheld authentic, slight shake
+  lighting: natural daylight, warm
+  mood: authentic, relatable, conversational
+  style: UGC-style, not corporate, smartphone-shot aesthetic
+prompt_template: |
+  15-second vertical 9:16 UGC-style ad.
+  Opening 3 seconds: {hook_visual}.
+  Middle: {product_or_service}.
+  Final 3 seconds: {cta_visual}.
+  {camera_feel}, {lighting}, {mood}, {style}.
+  No identifiable face unless explicitly directed,
+  smartphone-shot aesthetic, no slick commercial polish.

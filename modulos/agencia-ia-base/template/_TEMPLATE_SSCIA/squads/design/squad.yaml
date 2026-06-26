@@ -1,0 +1,81 @@
+name: design
+display_name: "📐 DESIGN"
+version: "2.0"
+description: "Design de criativo (carrosséis, GMB posts, Reels, estáticos) com pesquisa visual + AI generation via fal.ai + Pillow composition. Owner técnico de tudo que é PIXEL — MESTRE delega aqui, não toca. Squad agnóstica de nicho — adapta-se ao brand-profile.json do cliente."
+author: NEXUS
+language: pt-BR
+
+context:
+  client: "{{CLIENT_NAME}}"
+  project: "{{BRAND_MAIN}}"
+  channel: "Meta Ads + IG orgânico + GMB + LinkedIn (conforme brand-profile.platforms)"
+  formats:
+    carrossel: "1:1 (1080x1080) ou 4:5 (1080x1350) — 5 a 10 cards"
+    estatico_feed: "1:1 (1080x1080) ou 4:5 (1080x1350)"
+    gmb_post: "1:1 (1080x1080) — single image, otimizado pra busca local"
+    stories: "9:16 (1080x1920)"
+    reels: "9:16 (1080x1920) — 15 a 30s"
+  visual_constraints:
+    - "Diretor-arte adapta paleta + mood ao brand-profile.visual_identity"
+    - "Logo do cliente sempre presente (top-left padrão)"
+    - "Idioma das peças = brand-profile.language.publication"
+    - "Compliance/disclaimers conforme brand-profile.compliance.regulatory_notes"
+  budget_constraint: "Custo fal.ai monitorado — ai-generator usa cache de backgrounds quando possível, evita regeneração desnecessária"
+  ownership_critical: "MESTRE NÃO escreve script Pillow, NÃO escreve prompt fal.ai direto, NÃO debuga código de geração. Tudo isso é trabalho do ai-generator + designers desta squad."
+
+pipeline:
+  - step: 1
+    name: briefing-design
+    agent: design-chief
+    task: briefing-design.md
+    type: checkpoint
+    description: "DESIGN CHIEF recebe briefing de NEXUS + copy fechada da TRIGGER + brand foundation da CORE. Define formato + ângulo visual + handoff por agente"
+
+  - step: 2
+    name: pesquisa-visual
+    agent: visual-researcher
+    task: pesquisa-visual.md
+    type: execution
+    description: "VISUAL RESEARCHER faz mining no Meta Ads Library + Pinterest pra refs de criativos imobiliários winners (concorrentes diretos: MRV, Cury, Tenda, Direcional)"
+
+  - step: 3
+    name: direcao-arte
+    agent: diretor-arte-imobiliario
+    task: direcao-arte.md
+    type: execution
+    description: "DIRETOR DE ARTE define mood, paleta, hierarquia, narrative voice da peça com base nas refs + brand foundation"
+
+  - step: 4
+    name: producao-criativo
+    agent: design-chief
+    task: producao-criativo.md
+    type: execution
+    description: "Roteamento por formato: carrossel → designer-carrossel; estático → designer-estatico; reels → designer-video. AI generator gera assets visuais quando necessário"
+
+  - step: 5
+    name: validacao-compliance
+    agent: compliance-imobiliario
+    task: validacao-compliance.md
+    type: execution
+    cross_squad: true
+    cross_squad_path: "../core/agents/compliance-imobiliario.agent.md"
+    description: "Compliance da CORE valida disclaimers, CRECI, MCMV logo, alegações"
+
+  - step: 6
+    name: entrega
+    agent: design-chief
+    task: entrega.md
+    type: checkpoint
+    description: "DESIGN CHIEF consolida pacote final com versões finais + variações + assets brutos + brief técnico de produção"
+
+output:
+  directory: "./output/"
+  format: mixed
+  files:
+    - "carrosseis/"
+    - "estaticos/"
+    - "stories/"
+    - "reels/"
+    - "assets-base/"
+    - "refs-pesquisa/"
+    - "briefs-tecnicos/"

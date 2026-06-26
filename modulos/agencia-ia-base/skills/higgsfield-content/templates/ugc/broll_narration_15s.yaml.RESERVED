@@ -1,0 +1,34 @@
+name: ugc_broll_narration_15s
+playbook: viral-reels-seo
+sub_playbook: ugc-broll
+status: RESERVED
+description: |
+  UGC voiceover + B-roll (15-30s). RESERVADO — ativar caso-a-caso (decisão Alex 2026-05-14).
+
+  Pipeline planejado:
+    1. Roteiro (texto narração)
+    2. Voiceover ElevenLabs (per cliente):
+       - alex-sscia: voz clonada do Alex (a clonar)
+       - clientes pt-BR (Ballarin, Investbens): voz genérica pt-BR
+       - clientes en-US (FTC, Mendes, JRs): voz genérica en-US
+    3. 3-5 B-roll Higgsfield (DoP ou Kling 3.0 dependendo do contexto)
+    4. Squad video-editor monta (sincroniza áudio + B-roll + legendas SRT)
+    5. Push pro dashboard
+
+  Quando ativar:
+    - Renomear arquivo removendo .RESERVED
+    - Implementar generate_ugc_broll.py pipeline
+    - Confirmar voice cloning Alex feito (se for ConsultorIA)
+duration: 15
+aspect_ratio: "9:16"
+model: dop  # B-rolls com DoP; v_premium pode usar Kling
+required_params:
+  - narration_text
+  - broll_beats  # lista de 3-5 cenas pra B-roll
+  - voice_id  # ElevenLabs voice_id (do brand-profile.voice.elevenlabs_default_voice_id)
+defaults:
+  pacing: 1 beat per 3-5 seconds
+  music: optional (squad video-editor adiciona)
+  legenda: auto-gerada por elevenlabs-stt
+prompt_template: |
+  RESERVED — implementation pending Alex activation.

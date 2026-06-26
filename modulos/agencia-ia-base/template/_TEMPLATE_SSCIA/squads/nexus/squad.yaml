@@ -1,0 +1,79 @@
+name: nexus
+display_name: "🧭 NEXUS"
+version: "1.0"
+description: "Meta-orquestrador cross-squad — coordena demandas que cruzam Branding, Conteúdo, Tráfego, Copy, LP/SEO e Infraestrutura"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  handles: "{{CLIENTE_IG}}"
+  role: "Camada acima das 6 squads operacionais — única ponte entre {{CLIENTE_NOME}} e o ecossistema"
+  squads_under_command:
+    - branding (CORE) — guardião de marca
+    - conteudo-viral (VECTOR) — produção de conteúdo
+    - meta-ads-copy (TRIGGER) — copies de anúncio
+    - landing-pages-seo (GATE) — LPs + SEO
+    - trafego-pago (FLUX) — gestão de mídia paga
+    - infraestrutura (INFRA) — plataformas e integrações
+  activation_mode: "Híbrido — inline pra squads com checkpoints (branding, tráfego), subagent pra execuções puras (auditoria, pesquisa)"
+
+pipeline:
+  - step: 1
+    name: briefing-demanda
+    agent: nexus
+    task: briefing-demanda.md
+    type: checkpoint
+    description: "NEXUS recebe demanda do {{CLIENTE_NOME}}: o que precisa, prazo, contexto, prioridade"
+
+  - step: 2
+    name: analise-demanda
+    agent: router
+    task: analise-demanda.md
+    type: execution
+    description: "ROUTER decompõe demanda → identifica squads envolvidas, dependências, ordem de execução"
+
+  - step: 3
+    name: plano-orquestracao
+    agent: nexus
+    task: plano-orquestracao.md
+    type: checkpoint
+    description: "NEXUS apresenta plano cross-squad para aprovação: quais squads, paralelismo, handoffs, prazo"
+
+  - step: 4
+    name: execucao-coordenada
+    agent: bridge
+    task: execucao-coordenada.md
+    type: execution
+    description: "BRIDGE dispara squads no modo híbrido (inline ou subagent), gerencia handoffs e dependências"
+
+  - step: 5
+    name: auditoria-cruzada
+    agent: auditor
+    task: auditoria-cruzada.md
+    type: execution
+    description: "AUDITOR valida coerência entre entregas: copy ↔ LP ↔ tráfego ↔ brand book ↔ tom de voz"
+
+  - step: 6
+    name: consolidacao
+    agent: nexus
+    task: consolidacao-final.md
+    type: checkpoint
+    description: "NEXUS apresenta entrega consolidada cross-squad para aprovação final do {{CLIENTE_NOME}}"
+
+  - step: 7
+    name: registro
+    agent: chronicler
+    task: registro-cronica.md
+    type: execution
+    description: "CHRONICLER registra decisões, padrões e aprendizados em memories.md cross-squad"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "briefings/"
+    - "planos/"
+    - "auditorias/"
+    - "entregas-consolidadas/"
+    - "cronicas/"

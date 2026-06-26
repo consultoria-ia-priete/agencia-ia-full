@@ -1,0 +1,26 @@
+name: dop_extreme_closeup
+playbook: viral-reels-seo
+sub_playbook: dop-7s-reel
+description: |
+  Extreme close-up. Câmera colada na textura — fibra do tapete, veio da madeira, brilho do piso limpo.
+  Usado pra: textura sendo polida, stain absorvendo, fibra sendo aspirada.
+duration: 7
+aspect_ratio: "9:16"
+model: dop
+required_params:
+  - subject
+  - action
+defaults:
+  camera_feel: slow push-in
+  lighting: directional warm light
+  texture: extreme detail fills frame
+  mood: satisfying detail shot, craftsmanship
+validators:
+  - no_face_no_person
+  - dop_valid_angle
+prompt_template: |
+  Extreme close-up of {subject} {action},
+  texture filling entire frame at macro distance,
+  {camera_feel}, {lighting}, {texture},
+  no face no person visible, no hands close to lens,
+  {mood}.

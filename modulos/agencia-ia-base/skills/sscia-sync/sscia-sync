@@ -1,0 +1,4 @@
+#!/bin/bash
+# sscia-sync — wrapper bash chamável de qualquer lugar
+# Aponta pra ~/.claude/skills/sscia-sync/sync.py
+exec /usr/bin/env python3 "$HOME/.claude/skills/sscia-sync/sync.py" "$@"

@@ -1,0 +1,161 @@
+{
+  "_schema_version": "1.0",
+  "_description": "Brand profile do cliente — alimenta creative-factory, viral-video-factory, ghl-publisher, NEXUS e os 6 squads operacionais. Todo cliente novo herda este template e preenche os valores reais.",
+
+  "client": {
+    "id": "{{CLIENT_ID}}",
+    "name": "{{CLIENTE_NOME}}",
+    "operator": "{{CLIENTE_NOME}}",
+    "owner_email": "{{EMAIL_OPERADOR}}"
+  },
+
+  "brand": {
+    "main": "{{MARCA_PRINCIPAL}}",
+    "tagline": "",
+    "positioning": "",
+    "products": [],
+    "community": "{{COMUNIDADE}}",
+    "saas_recurring": "{{PRODUTO_RECORRENTE}}",
+    "industry": "{{NICHO_PRINCIPAL}}"
+  },
+
+  "social": {
+    "instagram_handle": "{{CLIENTE_IG}}",
+    "tiktok_handle": "",
+    "linkedin_url": "",
+    "facebook_url": "",
+    "youtube_handle": "",
+    "twitter_handle": ""
+  },
+
+  "websites": {
+    "primary": "{{SITE_PRINCIPAL}}",
+    "lp_low_ticket": "{{SITE_LOWTICKET}}",
+    "quiz": "{{SITE_QUIZ}}",
+    "tracking": "{{TRACKING_DOMAIN}}",
+    "domain_root": "{{DOMINIO_PRINCIPAL}}",
+    "blog": "",
+    "funnel_slug": "",
+    "tracking_pages_project": ""
+  },
+
+  "geo": {
+    "country": "BR",
+    "state": "",
+    "cities_primary": [],
+    "cities_secondary": [],
+    "service_radius_km": 0,
+    "exclusions": []
+  },
+
+  "language": {
+    "interface_chat": "pt-BR",
+    "publication": "pt-BR",
+    "publication_locale": "pt_BR"
+  },
+
+  "audience": {
+    "primary": "",
+    "promise": "{{RESULTADO_PROMETIDO}}",
+    "niche": "{{NICHO_PRINCIPAL}}",
+    "pain_points": [],
+    "dreams": [],
+    "objections": []
+  },
+
+  "voice": {
+    "tone": "warm-professional",
+    "register": "informal",
+    "vocabulary_approved": [],
+    "vocabulary_avoid": [],
+    "elevenlabs_default_voice_id": "",
+    "elevenlabs_default_voice_label": "",
+    "writing_examples": []
+  },
+
+  "visual_identity": {
+    "primary_color": "#000000",
+    "secondary_color": "#FFFFFF",
+    "accent_color": "",
+    "fonts": {
+      "display": "",
+      "body": "Inter"
+    },
+    "logo_url": "",
+    "logo_dark_url": "",
+    "favicon_url": "",
+    "moodboard_keywords": [],
+    "negative_visual_prompt": ""
+  },
+
+  "creative_factory_defaults": {
+    "image_model_organic": "fal-ai/flux/dev",
+    "image_model_ads": "fal-ai/flux/v1.1-pro",
+    "image_model_with_text": "fal-ai/ideogram/v3",
+    "image_model_consistency": "fal-ai/nano-banana/edit",
+    "image_model_higgsfield": "higgsfield/nano-banana-2k",
+    "video_model_short": "higgsfield/dop",
+    "video_model_premium": "higgsfield/veo-3.1",
+    "video_model_kling": "higgsfield/kling-3.0",
+    "video_model_seedance": "higgsfield/seedance-2.0",
+    "aspect_ratio_carousel": "1:1",
+    "aspect_ratio_reel": "9:16",
+    "aspect_ratio_cinematic": "9:16",
+    "aspect_ratio_gmb": "1:1",
+    "carousel_slide_count_default": 5
+  },
+
+  "content_engine": {
+    "group": "{{CONTENT_GROUP}}",
+    "playbook": "{{CONTENT_PLAYBOOK}}",
+    "sub_playbook": "{{CONTENT_SUB_PLAYBOOK}}",
+    "video_cadence_per_week": 0,
+    "image_cadence_per_week": 0,
+    "higgsfield_default_video_model": "dop",
+    "higgsfield_default_image_model": "nano-banana-2k",
+    "use_soul_avatar": false,
+    "carousel_canon": false,
+    "editorial_line": "TBD",
+    "ads_enabled": false,
+    "ad_creative_aspect_ratios": ["9:16", "1:1", "4:5"],
+    "ads_cadence_per_week": 0,
+    "video_editor_pipeline": "default"
+  },
+
+  "publishing": {
+    "ghl_location_id": "{{GHL_LOCATION_ID}}",
+    "ghl_workflow_id": "",
+    "ghl_account_ids": {
+      "instagram": "",
+      "tiktok": "",
+      "google_business_profile": "",
+      "facebook": "",
+      "linkedin": ""
+    },
+    "default_platforms": ["instagram"],
+    "default_cta": "",
+    "hashtags_default": [],
+    "post_signature": ""
+  },
+
+  "seo": {
+    "primary_keywords": [],
+    "long_tail_keywords": [],
+    "competitors": [],
+    "gmb_categories": []
+  },
+
+  "compliance": {
+    "do_not_mention": [],
+    "approved_claims": [],
+    "trademark_notes": "",
+    "regulatory_notes": ""
+  },
+
+  "_metadata": {
+    "schema_version": "1.0",
+    "created_at": "{{CREATED_AT}}",
+    "last_updated": "{{LAST_UPDATED}}",
+    "managed_by": "sscia-sync"
+  }
+}

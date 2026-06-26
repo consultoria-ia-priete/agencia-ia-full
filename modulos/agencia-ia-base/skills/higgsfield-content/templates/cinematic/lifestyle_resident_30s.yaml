@@ -1,0 +1,25 @@
+name: lifestyle_resident_30s
+playbook: cinematic-content
+description: |
+  Vídeo 30s mostrando uso real do apartamento — família/casal/solteiro vivendo no espaço.
+  Grupo A. Mostra varanda, cozinha integrada, sala, quarto, área de lazer comum.
+  Pessoa de costas / silhueta / mãos — NUNCA rosto identificável (compliance).
+duration: 30
+aspect_ratio: "9:16"
+model: kling-3.0
+required_params:
+  - room_or_amenity
+  - lifestyle_moment
+defaults:
+  camera_movement: smooth gimbal walking, slow handheld
+  lighting: natural daylight through window, warm interior
+  mood: warm, lived-in, achievable, BR middle-class lifestyle
+  framing: person from behind or silhouette, no identifiable face
+prompt_template: |
+  Cinematic 30-second vertical lifestyle video in {room_or_amenity}.
+  {lifestyle_moment}. {framing}.
+  {camera_movement}, {lighting}, {mood}.
+  Brazilian middle-class household, 2-bedroom MCMV apartment aesthetic,
+  contemporary furniture, plants, soft daylight.
+  No identifiable face, no text overlay, no logos.
+  9:16 vertical for Reels.

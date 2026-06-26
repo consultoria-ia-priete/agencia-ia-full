@@ -1,0 +1,29 @@
+name: ugc_interview_30s
+playbook: viral-reels-seo
+sub_playbook: ugc-interview
+status: RESERVED
+description: |
+  UGC talking-head (15-30s). RESERVADO — ativar caso-a-caso (decisão Alex 2026-05-14).
+
+  Produção possível (decisão futura):
+    1. Soul 2.0 avatar (Alex/ConsultorIA) — quando treinarmos o avatar
+    2. Ator stock AI + ElevenLabs voice cloning — aspiracional (NÃO testemunhal — risco CONAR)
+    3. Filmagem real do cliente — squad video-editor faz pós-produção
+
+  Quando ativar:
+    - Renomear arquivo removendo .RESERVED
+    - Implementar generate_ugc_interview.py pipeline
+    - Validar com Alex caso-a-caso (formato definido por reel)
+duration: 30
+aspect_ratio: "9:16"
+model: TBD
+required_params:
+  - talking_point
+  - emotional_arc
+  - production_mode  # soul-2.0 | stock-actor | real-footage
+defaults:
+  framing: medium close-up, eye-level
+  lighting: window-light natural OR ring-light studio
+  mood: authentic, conversational, direct-to-camera
+prompt_template: |
+  RESERVED — implementation pending Alex decision per reel.

@@ -1,0 +1,24 @@
+name: apartment_hero_30s
+playbook: cinematic-content
+description: |
+  Hero shot 30s vertical pra empreendimento MCMV (Grupo A: Ballarin Sou Viver Milão, Investbens Residencial Serraria).
+  Pode mostrar fachada, lobby, entrada, portaria. Foco em aspiração e desejo de compra.
+duration: 30
+aspect_ratio: "9:16"
+model: kling-3.0
+required_params:
+  - scene
+  - emotional_beat
+defaults:
+  camera_movement: slow cinematic crane up + dolly in
+  lighting: golden hour warm light, soft sun, soft shadows
+  mood: aspirational, warm, family-oriented, future home
+  era: modern Brazilian MCMV apartment building, contemporary architecture
+prompt_template: |
+  Cinematic 30-second vertical video, {camera_movement} reveal of {scene}.
+  {emotional_beat}.
+  {lighting}, {mood}.
+  {era}. Subtle depth of field, soft focus background,
+  high-end commercial real estate aesthetic.
+  No text overlay, no logos, no faces close to camera.
+  Render in 9:16 vertical, ready for Instagram Reels / Stories.

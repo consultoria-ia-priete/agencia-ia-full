@@ -1,0 +1,23 @@
+name: meta_static_1_1
+kind: ads
+description: |
+  Imagem estática 1:1 pra ads Meta (feed IG/FB). Hero shot único com headline visual.
+  Usado pra: ads imobiliário (apartamento + selo MCMV) ou autoridade Alex (Alex + frase impactante).
+duration: null
+aspect_ratio: "1:1"
+model: nano-banana-2k
+required_params:
+  - subject
+  - headline_visual_concept
+defaults:
+  lighting: professional studio or golden hour
+  framing: rule of thirds, leave space for text overlay top-left or bottom
+  style: clean commercial, scroll-stopping color contrast
+prompt_template: |
+  High-quality 1:1 square ad image.
+  Subject: {subject}.
+  Concept supporting headline "{headline_visual_concept}".
+  {lighting}, {framing}, {style}.
+  Composition leaves clear space for text overlay (post-production adds copy).
+  No text rendered in the image itself — clean visual only.
+  Photorealistic, commercial quality.

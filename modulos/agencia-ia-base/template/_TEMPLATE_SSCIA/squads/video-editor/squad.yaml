@@ -1,0 +1,107 @@
+name: video-editor
+display_name: "🎞️ Video Editor (pós-produção)"
+version: "1.0"
+description: "Pós-produção + edição clássica de vídeo (legendas, música, cortes, transições, watermark, color grade). Consome inputs das squads cinematic-content / viral-reels-seo / meta-ads-copy e devolve vídeo polido pronto pra publish. Engine: stack instalado (elevenlabs-stt, elevenlabs-music, remotion-render) + skill video-edit (runcomfy)."
+author: {{CLIENTE_NOME}}
+language: {{IDIOMA_PUBLICACAO}}
+
+context:
+  brand: {{MARCA_PRINCIPAL}}
+  pipeline_default: "{{VIDEO_EDITOR_PIPELINE}}"  # default | minimal | ads-only
+  inputs_aceitos:
+    - "Reels Higgsfield raw 7s (squad viral-reels-seo)"
+    - "Cinematic 30s (squad cinematic-content)"
+    - "Ad creatives (squad meta-ads-copy)"
+    - "A-roll + B-roll split-screen (squad viral-reels-seo Grupo B' autoridade)"
+    - "Vídeo bruto real (filmagem do cliente)"
+
+# Agentes:
+agents:
+  - codename: CUT
+    file: cut.agent.md
+    role: "Editor de cortes e montagem (Remotion / ffmpeg)"
+  - codename: SUB
+    file: sub.agent.md
+    role: "Legendas via elevenlabs-stt (forced alignment)"
+  - codename: SCORE
+    file: score.agent.md
+    role: "Música de fundo via elevenlabs-music / ai-music-generation"
+  - codename: GRADE
+    file: grade.agent.md
+    role: "Color grade + AI transformations via skill video-edit (runcomfy)"
+  - codename: LOGO
+    file: logo.agent.md
+    role: "Watermark / logo overlay (subtle, brand-profile.visual_identity.logo_url)"
+  - codename: CHIEF-EDIT
+    file: chief-edit.agent.md
+    role: "Chief — orquestra pipeline + valida output final"
+
+pipeline:
+  - step: 1
+    name: ingest
+    agent: CHIEF-EDIT
+    task: ingest.md
+    type: checkpoint
+    description: "Receber input (raw video) + brief do que precisa (legenda? música? watermark? color grade?)"
+
+  - step: 2
+    name: transcribe
+    agent: SUB
+    task: transcribe.md
+    type: execution
+    optional: true
+    description: "Se o vídeo tem áudio falado, extrair via elevenlabs-stt → SRT alinhado palavra-a-palavra"
+
+  - step: 3
+    name: cut_assembly
+    agent: CUT
+    task: cut-assembly.md
+    type: execution
+    description: "Cortar, ordenar clips. Pra split-screen: compor A-roll top + B-roll bottom em 9:16."
+
+  - step: 4
+    name: score
+    agent: SCORE
+    task: score.md
+    type: execution
+    optional: true
+    description: "Adicionar trilha de fundo (royalty-free OU gerada via elevenlabs-music)"
+
+  - step: 5
+    name: grade
+    agent: GRADE
+    task: grade.md
+    type: execution
+    optional: true
+    description: "Color grade via skill video-edit (runcomfy). Aplicar identidade de cor consistente cross-cliente."
+
+  - step: 6
+    name: logo
+    agent: LOGO
+    task: logo.md
+    type: execution
+    optional: true
+    description: "Watermark logo do brand-profile (subtle, canto inferior). Pra cliente imobiliário: CRECI no rodapé."
+
+  - step: 7
+    name: final_compose
+    agent: CUT
+    task: final-compose.md
+    type: execution
+    description: "Render final via Remotion. Output: <id>/final.mp4."
+
+  - step: 8
+    name: delivery
+    agent: CHIEF-EDIT
+    task: delivery.md
+    type: checkpoint
+    description: "Validar output + handoff pra squad chamadora (cinematic / viral-reels / meta-ads). Não publica direto."
+
+output:
+  directory: "./output/"
+  format: mp4 + srt + md
+  files:
+    - "polished/"   # final mp4
+    - "captions/"   # SRT + VTT
+    - "manifests/"
+    - "_handoff.md"

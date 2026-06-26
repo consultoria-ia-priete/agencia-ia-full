@@ -1,0 +1,75 @@
+name: branding
+display_name: "🏛️ Branding"
+version: "1.0"
+description: "Constrói e fortalece a marca {{MARCA_PRINCIPAL}} e personal brand {{CLIENTE_IG}}"
+author: {{CLIENTE_NOME}}
+language: pt-BR
+
+context:
+  brands:
+    personal: "{{CLIENTE_IG}} — {{CLIENTE_NOME}}"
+    business: "{{MARCA_PRINCIPAL}}"
+    community: "{{COMUNIDADE}}"
+    saas: "{{PRODUTO_RECORRENTE}}"
+  positioning: "{{POSICIONAMENTO}} — {{NICHO_PRINCIPAL}}"
+  audience: "{{AVATAR_PRINCIPAL}} querendo {{RESULTADO_PROMETIDO}}"
+
+pipeline:
+  - step: 1
+    name: auditoria
+    agent: brand-strategist
+    task: auditoria-marca.md
+    type: checkpoint
+    description: "Levanta estado atual da marca: presença, consistência, percepção"
+
+  - step: 2
+    name: concorrentes
+    agent: positioning-expert
+    task: analise-concorrentes.md
+    type: execution
+    description: "Mapeia principais concorrentes, posicionamentos e espaços em aberto"
+
+  - step: 3
+    name: posicionamento
+    agent: positioning-expert
+    task: posicionamento.md
+    type: checkpoint
+    description: "Define oceano azul, proposta única de valor e diferenciação da marca"
+
+  - step: 4
+    name: identidade
+    agent: identity-architect
+    task: identidade-visual-brief.md
+    type: execution
+    description: "Cria briefing de identidade visual: cores, tipografia, estilo visual, moodboard"
+
+  - step: 5
+    name: tom-voz
+    agent: tone-of-voice
+    task: guia-tom-voz.md
+    type: execution
+    description: "Desenvolve guia completo de tom de voz, vocabulário e estilo de comunicação"
+
+  - step: 6
+    name: manifesto
+    agent: brand-strategist
+    task: manifesto-marca.md
+    type: execution
+    description: "Escreve manifesto da marca {{MARCA_PRINCIPAL}} e da {{COMUNIDADE}}"
+
+  - step: 7
+    name: brand-book
+    agent: brand-strategist
+    task: brand-book.md
+    type: checkpoint
+    description: "Compila Brand Book resumido com todos os elementos definidos"
+
+output:
+  directory: "./output/"
+  format: markdown
+  files:
+    - "posicionamento.md"
+    - "identidade-visual-brief.md"
+    - "guia-tom-voz.md"
+    - "manifesto.md"
+    - "brand-book.md"

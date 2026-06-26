@@ -1,0 +1,25 @@
+name: tv_spot_15s
+kind: ads
+description: |
+  Spot 15s estilo TV/Hi-prod pra ads brand-awareness (não UGC).
+  Usado pra: Ballarin/Investbens hero shot do empreendimento + voiceover prof (squad video-editor sobrepõe).
+duration: 15
+aspect_ratio: "16:9"
+model: veo-3.1
+required_params:
+  - opening_visual
+  - product_reveal
+  - closing_visual
+defaults:
+  camera_movement: cinematic crane / dolly / smooth gimbal
+  lighting: cinematic golden hour, professional grade
+  mood: aspirational, emotional, commercial polish
+  style: TV commercial production value, glossy
+prompt_template: |
+  15-second 16:9 cinematic TV spot.
+  Opening 0-3s: {opening_visual}.
+  Middle 3-10s: {product_reveal} with hero shot.
+  Closing 10-15s: {closing_visual}.
+  {camera_movement}, {lighting}, {mood}, {style}.
+  Soundtrack-ready (voiceover added in post by video-editor squad),
+  no text overlay, no logo (added in post).

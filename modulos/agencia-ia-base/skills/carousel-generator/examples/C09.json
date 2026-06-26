@@ -1,0 +1,85 @@
+{
+  "id": "C09-test",
+  "data_publicacao": "2026-04-25",
+  "slot_brt": "18h00",
+  "tema": "3 automações que fecham contrato em 1 semana",
+  "pilar": "educacao_tecnica",
+  "variant": "LIGHT",
+  "palavra_gatilho": "AUTOMACAO",
+  "tem_seeding_crm_funnels": true,
+  "caption": "Empresário CNPJ não te paga por \"IA\".\n\nEle te paga por RESULTADO mensurável que ele consegue ver na primeira semana.\n\nE pra entregar isso, basta dominar 3 automações que qualquer consultor monta:\n\n1. ATENDIMENTO WHATSAPP 24/7\n2. TRIAGEM E CLASSIFICAÇÃO DE LEADS\n3. RESUMO AUTOMÁTICO DE REUNIÃO\n\n12 horas de setup. R$1.500/mês de fee recorrente. É matemática.\n\n——\n\nComenta AUTOMACAO aqui e eu te mando o link do meu Treinamento Grátis de como criar sua ConsultorIA.\n\n#ConsultorIA #AutomacaoIA #NDE #AlexPriete",
+  "slides": [
+    {
+      "tipo": "capa",
+      "eyebrow": "O COMBO QUE FECHA CONTRATO",
+      "hook": "<verde>3</verde> automações que fecham contrato em <highlight>1 semana</highlight>.",
+      "subtitle": "O combo de entrega que faz CNPJ pagar R$ 1.500/mês sem pestanejar."
+    },
+    {
+      "tipo": "body",
+      "eyebrow": "A REGRA DO CNPJ",
+      "hook": "Você não precisa entregar <strike>\"IA\"</strike>. Entrega <highlight>resultado</highlight>.",
+      "paragraphs": [
+        "O empresário te paga por resultado mensurável que ele vê na primeira semana — não por tecnologia."
+      ]
+    },
+    {
+      "tipo": "metrics",
+      "tag": "// AUTOMAÇÃO 01",
+      "hook": "Atendimento WhatsApp 24/7 com IA",
+      "desc": "Bot qualifica lead, marca reunião e reduz custo de SDR em 70%.",
+      "metrics": [
+        {"label": "Custo fixo", "val": "R$ 0", "highlight": true},
+        {"label": "Setup", "val": "4 horas"},
+        {"label": "Economia cliente", "val": "R$ 3K/mês", "highlight": true}
+      ]
+    },
+    {
+      "tipo": "body",
+      "eyebrow": "A MATEMÁTICA QUE FECHA",
+      "hook": "Se ele economiza <black-block>R$ 3K/mês</black-block>, paga <highlight>R$ 1.500</highlight> sem pensar.",
+      "paragraphs": [
+        "Toda automação que entrega economia maior que o fee é venda fechada."
+      ]
+    },
+    {
+      "tipo": "metrics",
+      "tag": "// AUTOMAÇÃO 02",
+      "hook": "Triagem e classificação de leads",
+      "desc": "IA lê leads que entram, classifica por temperatura e dispara workflow. Vendedor só fala com lead quente.",
+      "metrics": [
+        {"label": "Setup", "val": "6 horas"},
+        {"label": "Conversão", "val": "+25 a 40%", "highlight": true},
+        {"label": "Stack", "val": "CRM Funnels + Claude Code"}
+      ]
+    },
+    {
+      "tipo": "metrics",
+      "tag": "// AUTOMAÇÃO 03",
+      "hook": "Resumo automático de reunião",
+      "desc": "Grava, transcreve, gera ata e cria tarefas direto no CRM. Operação para de perder follow-up.",
+      "metrics": [
+        {"label": "Setup", "val": "2 horas"},
+        {"label": "Tempo ganho", "val": "5h/vendedor", "highlight": true},
+        {"label": "Stack", "val": "Whisper + CRM Funnels"}
+      ]
+    },
+    {
+      "tipo": "seeding",
+      "eyebrow": "A CONTA FECHA",
+      "lines": [
+        "<highlight>1 SEMANA</highlight>.",
+        "<black-highlight>R$ 1.500/MÊS</black-highlight>.",
+        "<highlight>RECORRENTE</highlight>."
+      ],
+      "subtitle": "É o modelo que eu vivo todo mês."
+    },
+    {
+      "tipo": "cta",
+      "comenta_word": "AUTOMACAO",
+      "payoff_pre": "e eu te mando o link do meu",
+      "payoff_highlight": "Treinamento Grátis",
+      "payoff_post": "de como criar sua ConsultorIA."
+    }
+  ]
+}

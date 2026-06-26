@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://{{WEBINAR_DOMAIN}}/sitemap.xml
